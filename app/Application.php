@@ -7,6 +7,7 @@ namespace SampleProject;
 
 use Dietcube\Application as DCApplication;
 use Pimple\Container;
+use SampleProject\Service\OmikujiService;
 use SampleProject\Service\SampleService;
 
 class Application extends DCApplication
@@ -21,6 +22,13 @@ class Application extends DCApplication
         // setup container or services here
         $container['service.sample'] = function () use ($container)  {
             $sample_service = new SampleService();
+            $sample_service->setLogger($container['logger']);
+
+            return $sample_service;
+        };
+
+        $container['service.omikuji'] = function ($container)  {
+            $sample_service = new OmikujiService();
             $sample_service->setLogger($container['logger']);
 
             return $sample_service;

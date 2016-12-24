@@ -3,15 +3,18 @@
 namespace SampleProject\Controller;
 
 use Dietcube\Controller;
+use SampleProject\Service\OmikujiService;
 
 class HelloController extends Controller
 {
     public function index()
     {
-//        $hello_service = $this->get('service.hello');
+        /** @var OmikujiService $omikuji_service */
+        $omikuji_service = $this->get('service.omikuji');
+        $today = (new \DateTime())->format('d');
 
         return $this->render('hello/hello_world', [
-            'message' => 'Hello, World !',
+            'message' => 'あなたの今日の運勢は' . $omikuji_service->getResult($today) . 'です。',
         ]);
     }
 }
