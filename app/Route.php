@@ -15,6 +15,7 @@ class Route implements RouteInterface
         return [
             ['GET', '/', 'Top::index'],
             ['GET', '/hello', 'Hello::index'],
+            ['GET', '/birthday/{month}/{day}', 'Hello::birthday'],
         ];
     }
 }

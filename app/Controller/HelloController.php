@@ -17,4 +17,14 @@ class HelloController extends Controller
             'message' => 'あなたの今日の運勢は' . $omikuji_service->getResult($today) . 'です。',
         ]);
     }
+
+    public function birthday($month, $day)
+    {
+        /** @var OmikujiService $omikuji_service */
+        $omikuji_service = $this->get('service.omikuji');
+
+        return $this->render('hello/hello_world', [
+            'message' => "あなたの誕生日、${month}月${day}日の運勢は" . $omikuji_service->getResult($month + $day) . 'です。',
+        ]);
+    }
 }
