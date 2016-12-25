@@ -54,10 +54,10 @@
   <body>
 
     <div class="main">
-
-      <h1>SampleProject</h1>
-      <p>{{ sample_hello }}</p>
-
+      {% block main %}
+        <h1>SampleProject</h1>
+        <p>{{ sample_hello }}</p>
+      {% endblock main %}
     </div>
 
     <footer class="footer">
